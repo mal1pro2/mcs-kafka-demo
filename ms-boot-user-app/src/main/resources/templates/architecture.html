@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title>Website</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a href="/" th:href="@{/}">Overview Of Kafka</a></li>
+				<li><a href="/" th:href="@{/usecases}">Use Cases Of Kafka</a></li>
+				<li><a href="/" th:href="@{/architecture}">Architecture Of
+						Kafka</a></li>
+				<li><a href="/" th:href="@{/sopopular}">Why So Popular?</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/" th:href="@{/logout}"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<div class="container">
+		<div class="right">
+
+			<h1 class="content-title">&nbsp;&nbsp;Apache Kafka Architecture</h1>
+
+			<div class="col-sm-10 offset-sm-1 col-md-6 offset-md-0">
+				<div class="primary first-p-bold">
+					<p>
+						<span style="font-weight: 400;">Apache Kafka is a
+							distributed streaming platform with plenty to offer—from
+							redundant storage of massive data volumes, to a message bus
+							capable of throughput reaching millions of messages each second.
+							These capabilities and more make Kafka a solution that’s
+							tailor-made for processing streaming data from real-time
+							applications.&nbsp;</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">Despite its name’s
+							suggestion of Kafkaesque complexity, Apache Kafka’s architecture
+							actually delivers an easier to understand approach to application
+							messaging than many of the alternatives. Kafka is essentially a
+							commit log with a very simplistic data structure. It just happens
+							to be an exceptionally fault-tolerant and horizontally scalable
+							one.</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">The Kafka commit log
+							provides a persistent ordered data structure. Records cannot be
+							directly deleted or modified, only appended onto the log. The
+							order of items in Kafka logs is guaranteed. The Kafka cluster
+							creates and updates a partitioned commit log for each topic that
+							exists. All messages sent to the same partition are stored in the
+							order that they arrive. Because of this, the sequence of the
+							records within this commit log structure is ordered and
+							immutable. Kafka also assigns each record a unique sequential ID
+							known as an “offset,” which is used to retrieve data.</span>
+					</p>
+					<p>
+						<img loading="lazy"
+							class="aligncenter wp-image-21948 size-medium_large"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_768,h_400/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image2-768x400.png"
+							alt="Kafka commit log" width="768" height="400">
+					</p>
+					<p>
+						<span style="font-weight: 400;">Kafka addresses common
+							issues with distributed systems by providing set ordering and
+							deterministic processing. Because Kafka stores message data
+							on-disk and in an ordered manner, it benefits from sequential
+							disk reads. Considering the high resource cost of disk seeks, the
+							fact that firstly Kafka processes reads and writes at a
+							consistent pace, and secondly reads and writes happen
+							simultaneously without getting in each other’s way, combine to
+							deliver tremendous performance advantages.</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">With Kafka, horizontal
+							scaling is easy. This means that Kafka can achieve the same high
+							performance when dealing with any sort of task you throw at it,
+							from the small to the massive.</span>
+					</p>
+					<h2>
+						<span style="font-weight: 400;">Apache Kafka Architecture –
+							Component Overview</span>
+					</h2>
+					<p>
+						<span style="font-weight: 400;">Kafka architecture is made
+							up of topics, producers, consumers, consumer groups, clusters,
+							brokers, partitions, replicas, leaders, and followers. The
+							following diagram offers a simplified look at the interrelations
+							between these components.</span>
+					</p>
+					<p>
+						<img loading="lazy" class="aligncenter wp-image-21949 size-full"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_700,h_540/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image1.png"
+							alt="Apache Kafka Architecture - Component Overview" width="700"
+							height="540">
+					</p>
+					<h2>
+						<span style="font-weight: 400;">Kafka API Architecture</span>
+					</h2>
+					<p>
+						<span style="font-weight: 400;">Apache Kafka offers four
+							key APIst: the Producer API, Consumer API, Streams API, and
+							Connector API.&nbsp;</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">Let’s take a brief look at
+							how each of them can be used to enhance the capabilities of
+							applications:</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Producer API</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">The Kafka Producer API
+							enables an application to publish a stream of records to one or
+							more Kafka topics.</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Consumer API</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">The Kafka Consumer API
+							enables an application to subscribe to one or more Kafka topics.
+							It also makes it possible for the application to process streams
+							of records that are produced to those topics.</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Streams API</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">The Kafka Streams API
+							allows an application to process data in Kafka using a streams
+							processing paradigm. With this API, an application can consume
+							input streams from one or more topics, process them with streams
+							operations, and produce output streams and send them to one or
+							more topics. In this way, the Streams API makes it possible to
+							transform input streams into output streams.</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Connect API</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">The Kafka Connector API
+							connects applications or data systems to Kafka topics. This
+							provides options for building and managing the running of
+							producers and consumers, and achieving reusable connections among
+							these solutions. For instance, a connector could capture all
+							updates to a database and ensure those changes are made available
+							within a Kafka topic.&nbsp;</span>
+					</p>
+					<h2>
+						<span style="font-weight: 400;">Kafka Cluster Architecture</span>
+					</h2>
+					<p>
+						<span style="font-weight: 400;">Now let’s take a closer
+							look at some of Kafka’s main architectural components:</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Kafka Brokers</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">A Kafka broker is a server
+							running in a Kafka cluster (or, put another way: a Kafka cluster
+							is made up of a number of brokers). Typically, multiple brokers
+							work in concert to form the Kafka cluster and achieve load
+							balancing and reliable redundancy and failover. Brokers utilize
+							Apache ZooKeeper for management and coordination of the cluster.
+							Each broker instance is capable of handling read and write
+							quantities reaching to the hundreds of thousands each second (and
+							terabytes of messages) without any impact on performance. Each
+							broker has a unique ID, and can be responsible for partitions of
+							one or more topic logs. Kafka brokers also leverage ZooKeeper for
+							leader elections, in which a broker is elected to lead the
+							dealing with client requests for an individual partition of a
+							topic. Connecting to any broker will bootstrap a client to the
+							full Kafka cluster. To achieve reliable failover, a minimum of
+							three brokers should be utilized —with greater numbers of brokers
+							comes increased reliability.&nbsp;</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Apache ZooKeeper
+							Architecture</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Kafka brokers use ZooKeeper
+							to manage and coordinate the Kafka cluster. ZooKeeper notifies
+							all nodes when the topology of the Kafka cluster changes,
+							including when brokers and topics are added or removed. For
+							example, ZooKeeper informs the cluster if a new broker joins the
+							cluster, or when a broker experiences a failure. ZooKeeper also
+							enables leadership elections among brokers and topic partition
+							pairs, helping determine which broker will be the leader for a
+							particular partition (and server read and write operations from
+							producers and consumers), and which brokers hold replicas of that
+							same data.When ZooKeeper notifies the cluster of broker changes,
+							they immediately begin to coordinate with each other and elect
+							any new partition leaders that are required. This protects
+							against the event that a broker is suddenly absent.&nbsp;</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Kafka Producers</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">A Kafka producer serves as
+							a data source that optimizes, writes, and publishes messages to
+							one or more Kafka topics. Kafka producers also serialize,
+							compress, and load balance data among brokers through
+							partitioning.</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Kafka Consumers</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Consumers read data by
+							reading messages from the topics to which they subscribe.
+							Consumers will belong to a consumer group. Each consumer within a
+							particular consumer group will have responsibility for reading a
+							subset of the partitions of each topic that it is subscribed
+							to.&nbsp;</span>
+					</p>
+					<h2>
+						<span style="font-weight: 400;">Basic Kafka Architecture
+							Concepts</span>
+					</h2>
+					<p>
+						<span style="font-weight: 400;">The following concepts are
+							the foundation to understanding Kafka architecture:</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Kafka Topics</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">A Kafka topic defines a
+							channel through which data is streamed. Producers publish
+							messages to topics, and consumers read messages from the topic
+							they subscribe to. Topics organize and structure messages, with
+							particular types of messages published to particular topics.
+							Topics are identified by unique names within a Kafka cluster, and
+							there is no limit on the number of topics that can be
+							created.&nbsp;</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Kafka Partitions</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Within the Kafka cluster,
+							topics are divided into partitions, and the partitions are
+							replicated across brokers. From each partition, multiple
+							consumers can read from a topic in parallel. It’s also possible
+							to have producers add a key to a message—all messages with the
+							same key will go to the same partition. While messages are added
+							and stored within partitions in sequence, messages without keys
+							are written to partitions in a round robin fashion. By leveraging
+							keys, you can guarantee the order of processing for messages in
+							Kafka that share the same key. This is a particularly useful
+							feature for applications that require total control over records.
+							There is no limit on the number of Kafka partitions that can be
+							created (subject to the processing capacity of a cluster).</span><br>
+					</p>
+					<aside class="content-cta cta-grey">
+						<div class="primary">
+							<h3>
+								<span style="color: #000034;"><strong>Want
+										answers to questions like</strong></span>
+							</h3>
+							<p>
+								“What impact does increasing partitions have on throughput?”<br>
+								“Is there an optimal number of partitions for a cluster to
+								maximize write throughput?”
+							</p>
+							<p>
+								<span style="text-decoration: underline;"><strong><a
+										style="color: #000034; text-decoration: underline;"
+										href="https://www.instaclustr.com/the-power-of-kafka-partitions-how-to-get-the-most-out-of-your-kafka-cluster/"
+										target="_blank" rel="noopener">Learn more in our blog on
+											Kafka Partitions</a></strong></span>
+							</p>
+						</div>
+					</aside>
+					<p></p>
+					<h3>
+						<span style="font-weight: 400;">Topic Replication Factor</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Topic replication is
+							essential to designing resilient and highly available Kafka
+							deployments. When a broker goes down, topic replicas on other
+							brokers will remain available to ensure that data remains
+							available and that the Kafka deployment avoids failures and
+							downtime. The replication factor that is set defines how many
+							copies of a topic are maintained across the Kafka cluster. It is
+							defined at the topic level, and takes place at the partition
+							level. For example, a replication factor of 2 will maintain two
+							copies of a topic for every partition. As mentioned above, a
+							certain broker serves as the elected leader for each partition,
+							and other brokers keep a&nbsp; replica to be utilized if
+							necessary. Logically, the replication factor cannot be greater
+							than the total number of brokers available in the cluster. A
+							replica that is up to date with the leader of a partition is said
+							to be an In-Sync Replica (ISR).</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Consumer Group</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">A Kafka consumer group
+							includes related consumers with a common task. Kafka sends
+							messages from partitions of a topic to consumers in the consumer
+							group. At the time it is read, each partition is read by only a
+							single consumer within the group. A consumer group has a unique
+							group-id, and can run multiple processes or instances at once.
+							Multiple consumer groups can each have one consumer read from a
+							single partition. If the quantity of consumers within a group is
+							greater than the number of partitions, some consumers will be
+							inactive.</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Kafka Internal Architecture
+							in Brief</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Assembling the components
+							detailed above, Kafka producers write to topics, while Kafka
+							consumers read from topics. Topics represent commit log data
+							structures stored on disk. Kafka adds records written by
+							producers to the ends of those topic commit logs. Topic logs are
+							also made up of multiple partitions, straddling multiple files
+							and potentially multiple cluster nodes. Consumers can use offsets
+							to read from certain locations within topic logs. Consumer groups
+							each remember the offset that represents the place they last read
+							from a topic.</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">Partitions of topic logs
+							are distributed across cluster nodes, or brokers, to achieve
+							horizontal scalability and high performance. Kafka architecture
+							can be leveraged to improve upon these goals, simply by utilizing
+							additional consumers as needed in a consumer group to access
+							topic log partitions replicated across nodes. This enables Apache
+							Kafka to provide greater failover and reliability while at the
+							same time increasing processing speed.</span>
+					</p>
+					<h2>
+						<span style="font-weight: 400;">Kafka Architecture
+							Advantages</span>
+					</h2>
+					<p>
+						<span style="font-weight: 400;">There are many beneficial
+							reasons to utilize Kafka, each of which traces back to the
+							solution’s architecture. Some of these key advantages include:</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Scalability and Performance</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Kafka offers
+							high-performance sequential writes, and shards topics into
+							partitions for highly scalable reads and writes. As a result,
+							Kafka allows multiple producers and consumers to read and write
+							simultaneously (and at extreme speeds). Additionally, topics
+							divided across multiple partitions can leverage storage across
+							multiple servers, which in turn can enable applications to
+							utilize the combined power of multiple disks.&nbsp;</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">With multiple producers
+							writing to the same topic via separate replicated partitions, and
+							multiple consumers from multiple consumer groups reading from
+							separate partitions as well, it’s possible to reach just about
+							any level of desired scalability and performance through this
+							efficient architecture.</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Reliability</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Kafka architecture
+							naturally achieves failover through its inherent use of
+							replication. Topic partitions are replicated on multiple Kafka
+							brokers, or nodes, with topics utilizing a set replication
+							factor. The failure of any Kafka broker causes an ISR to take
+							over the leadership role for its data, and continue serving it
+							seamlessly and without interruption.&nbsp;</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">Disaster Recovery</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Beyond Kafka’s use of
+							replication to provide failover, the Kafka utility MirrorMaker
+							delivers a full-featured disaster recovery solution. MirrorMaker
+							is designed to replicate your entire Kafka cluster, such as into
+							another region of your cloud provider’s network or within another
+							data center. In this way, Kafka MirrorMaker architecture enables
+							your Kafka deployment to maintain seamless operations throughout
+							even macro-scale disasters. This functionality is referred to as
+							mirroring, as opposed to the standard failover replication
+							performed within a Kafka cluster. For an example of how to
+							utilize Kafka and MirrorMaker, an organization might place its
+							full Kafka cluster in a single cloud provider region in order to
+							take advantage of localized efficiencies, and then mirror that
+							cluster to another region with MirrorMaker to maintain a robust
+							disaster recovery option.</span>
+					</p>
+					<h2>
+						<span style="font-weight: 400;">Kafka Architecture –
+							Component Relationship Examples</span>
+					</h2>
+					<p>
+						<span style="font-weight: 400;">Let’s look at the
+							relationships among the key components within Kafka architecture.
+							Note the following when it comes to brokers, replicas, and
+							partitions:</span>
+					</p>
+					<ul>
+						<li style="font-weight: 400;"><span style="font-weight: 400;">Kafka
+								clusters may include one or more brokers.</span></li>
+						<li style="font-weight: 400;"><span style="font-weight: 400;">Kafka
+								brokers are able to host multiple partitions.</span></li>
+						<li style="font-weight: 400;"><span style="font-weight: 400;">Topics
+								are able to include one or more partitions.</span></li>
+						<li style="font-weight: 400;"><span style="font-weight: 400;">Brokers
+								are able to host either one or zero replicas for each partition.</span></li>
+						<li style="font-weight: 400;"><span style="font-weight: 400;">Each
+								partition includes one leader replica, and zero or greater
+								follower replicas.</span></li>
+						<li style="font-weight: 400;"><span style="font-weight: 400;">Each
+								of a partition’s replicas has to be on a different broker.</span></li>
+						<li style="font-weight: 400;"><span style="font-weight: 400;">Each
+								partition replica has to fit completely on a broker, and cannot
+								be split onto more than one broker.</span></li>
+						<li style="font-weight: 400;"><span style="font-weight: 400;">Each
+								broker can be the leader for zero or more topic/partition pairs.</span></li>
+					</ul>
+					<p>
+						<span style="font-weight: 400;">Now let’s look at a few
+							examples of how producers, topics, and consumers relate to one
+							another:</span>
+					</p>
+					<p>
+						<img loading="lazy" class="wp-image-21950 size-full aligncenter"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_700,h_205/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image6.png"
+							alt="Kafka Architecture - Component relationship examples"
+							width="700" height="205">
+					</p>
+					<p>
+						<span style="font-weight: 400;">Here we see a simple
+							example of a producer sending a message to a topic, and a
+							consumer that is subscribed to that topic reading the message.</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">The following diagram
+							demonstrates how producers can send messages to singular topics:</span>
+					</p>
+					<p>
+						<img loading="lazy" class="aligncenter wp-image-21951 size-full"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_546,h_381/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image9-e1592279580779.png"
+							alt="Producers sending messages to singular topics" width="546"
+							height="381">
+					</p>
+					<p>
+						<span style="font-weight: 400;">Consumers can subscribe to
+							multiple topics at once and receive messages from them in a
+							single poll (Consumer 3 in the diagram shows an example of this).
+							The messages that consumers receive can be checked and filtered
+							by topic when needed (using the technique of adding keys to
+							messages, described above).&nbsp;</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">Now let’s look at a
+							producer that is sending messages to multiple topics at once, in
+							an asynchronistic manner:</span>
+					</p>
+					<p>
+						<img loading="lazy" class="aligncenter wp-image-21952 size-full"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_614,h_322/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image5-e1592279674249.png"
+							alt="Producer sending messages to multiple topics at once, in an asynchronistic manner"
+							width="614" height="322">
+					</p>
+					<p>
+						<span style="font-weight: 400;">Technically, a producer may
+							only be able send messages to a single topic at once. However, by
+							sending messages asynchronously, producers can functionally
+							deliver multiple messages to multiple topics as needed.</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">Kafka architecture is built
+							around emphasizing the performance and scalability of brokers.
+							This leaves producers to handle the responsibility of controlling
+							which partition receives which messages. A hashing function on
+							the message key determines the default partition where a message
+							will end up. If no key is defined, the message lands in
+							partitions in a roundrobin series.&nbsp;</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">These methods can lead to
+							issues or suboptimal outcomes however, in scenarios that include
+							message ordering or an even message distribution across
+							consumers. To solve such issues, it’s possible to control the way
+							producers send messages and direct those messages to </span><i><span
+							style="font-weight: 400;">specific</span></i><span
+							style="font-weight: 400;"> partitions. Doing so requires
+							using a customer partitioner, or the default partitions along
+							with available manual or hashing options.</span>
+					</p>
+					<h3>
+						<span style="font-weight: 400;">The Value of Consumers in
+							Kafka Architecture</span>
+					</h3>
+					<p>
+						<span style="font-weight: 400;">Within Kafka architecture,
+							each topic is associated with one or more partitions, and those
+							are spread over one or more brokers. Each partition is replicated
+							on those brokers based on the set replication factor. While the
+							replication factor controls the number of replicas (and therefore
+							reliability and availability), the number of partitions controls
+							the parallelism of consumers (and therefore read scalability).
+							This is because each partition can only be associated with one
+							consumer instance out of each consumer group, and the total
+							number of consumer instances for each group is less than or equal
+							to the number of partitions. Adding more partitions enables more
+							consumer instances, thereby enabling reads at increased scale.</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">As a result of these
+							aspects of Kafka architecture, events within a partition occur in
+							a certain order. Inside a particular consumer group, each event
+							is processed by a single consumer, as expected. When multiple
+							consumer groups subscribe to the same topic, and each has a
+							consumer ready to process the event, then all of those consumers
+							receive every message broadcast by the topic. In practice, this
+							broadcast capability is quite valuable.&nbsp;</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">The next examples show a
+							few different techniques for beneficially leveraging a single
+							topic along with multiple partitions, consumers, and consumer
+							groups.</span>
+					</p>
+					<p>
+						<span style="font-weight: 400;">In this example, the Kafka
+							deployment architecture uses an equal number of partitions and
+							consumers within a consumer group:</span>
+					</p>
+					<p>
+						<img loading="lazy" class="aligncenter wp-image-21953 size-full"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_644,h_199/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image8-e1592279765687.png"
+							alt="Kafka deployment architecture using an equal number of partitions and consumers within a consumer group"
+							width="644" height="199">
+					</p>
+					<p>
+						<span style="font-weight: 400;">As we’ve established,
+							Kafka’s dynamic protocols assign a single consumer within a group
+							to each partition. This is usually the best configuration, but it
+						</span><i><span style="font-weight: 400;">can</span></i><span
+							style="font-weight: 400;"> be bypassed by directly linking
+							a consumer to a specific topic/partition pair. Doing so is
+							essentially removing the consumer from participation in the
+							consumer group system. While it is unusual to do so, it may be
+							useful in certain specialized situations.</span>
+					</p>
+					<p>
+						<img loading="lazy" class="aligncenter wp-image-21954 size-full"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_600,h_192/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image3-e1592279900321.png"
+							alt="Kafka’s dynamic protocols" width="600" height="192">
+					</p>
+					<p>
+						<span style="font-weight: 400;">Now let’s look at a case
+							where we use more consumers in a group than we have partitions.
+							This causes some consumers to stand idle. Kafka can make good use
+							of these idle consumers by failing over to them in the event that
+							an active consumer dies, or assigning them work if a new
+							partition comes into existence.</span>
+					</p>
+					<p>
+						<img loading="lazy" class="aligncenter wp-image-21955 size-full"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_586,h_239/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image4-e1592279974917.png"
+							alt="Idle Consumer - more consumers in a group than partitions"
+							width="586" height="239">
+					</p>
+					<p>
+						<span style="font-weight: 400;">Next, let’s look at an
+							example of a group which includes fewer consumers than
+							partitions. The result in this example is that Consumer A2 is
+							stuck with the responsibility of processing more messages that
+							its counterpart, Consumer A1:</span>
+					</p>
+					<p>
+						<img loading="lazy" class="aligncenter wp-image-21956 size-large"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_1024,h_329/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image10-e1592280174792-1024x329.png"
+							alt="Fewer consumers than partitions" width="1024" height="329">
+					</p>
+					<p>
+						<span style="font-weight: 400;">In our last example,
+							multiple consumer groups receive every event from every Kafka
+							partition, resulting in messages being fully broadcast to all
+							groups:</span>
+					</p>
+					<p>
+						<img loading="lazy" class="aligncenter wp-image-21957 size-full"
+							src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_600,h_302/https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image7-e1592280233362.png"
+							alt="Multiple consumer groups receive every event from every Kafka partition"
+							width="600" height="302">
+					</p>
+					<p>
+						<span style="font-weight: 400;">Kafka’s dynamic protocol
+							handles all the maintenance work required to ensure a consumer
+							remains a member of its consumer group. When new consumer
+							instances join a consumer group, they are also automatically and
+							dynamically assigned partitions, taking them over from existing
+							consumers in the consumer group as necessary. If and when a
+							consumer instance dies, its partition will be reassigned to a
+							remaining instance in the same manner.</span>
+					</p>
+					<h2>
+						<span style="font-weight: 400;">Resourcing Consumers and
+							Producers</span>
+					</h2>
+					<p>
+						<span style="font-weight: 400;">In developing your
+							understanding of how Kafka consumers operate within Kafka’s
+							architecture and from a resource perspective, it’s crucial to
+							recognize that consumers and producers do not run on Kafka
+							brokers, and instead require their own CPU and IO resources. This
+							resource independence is a boon when it comes to running
+							consumers in whatever method and quantity is ideal for the task
+							at hand, providing full flexibility with no need to consider
+							internal resource relationships while deploying consumers across
+							brokers. That said, this flexibility comes with responsibility:
+							it’s up to you to figure out the optimal deployment and
+							resourcing methods for your consumers and producers. This is no
+							small challenge, and must be considered with care. Leveraging
+							highly scalable and elastic microservices to fulfill this need is
+							one suggested strategy.</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

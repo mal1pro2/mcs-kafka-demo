@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title>Website</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a href="/" th:href="@{/}">Overview Of Kafka</a></li>
+				<li><a href="/" th:href="@{/usecases}">Use Cases Of Kafka</a></li>
+				<li><a href="/" th:href="@{/architecture}">Architecture Of
+						Kafka</a></li>
+				<li><a href="/" th:href="@{/sopopular}">Why So Popular?</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/" th:href="@{/logout}"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<div class="container">
+		<div class="right">
+
+			<h1 class="content-title">&nbsp;Why is kafka so Popular?</h1>
+
+			<div class="col-sm-10 offset-sm-1 col-md-6 offset-md-0">
+				<div class="primary first-p-bold">
+					<p>
+						Kafka’s excellent performance makes it extremely popular. Kafka is
+						fast and efficient, and with the right training, it’s easy to set
+						up and use. One of Kafka’s main features is fault tolerant storage
+						which makes it stable and reliable. It has a flexible
+						publish-subscribe/queue that scales well. Kafka is optimized for
+						efficiency and naturally groups messages together to reduce the
+						overhead of the network round trip. &nbsp;<br>With the right
+						developer talent creating the consumer code, Kafka can support a
+						large number of consumers and retain large amounts of data with
+						very little overhead. &nbsp;<br> Data science and analytics
+						are an extremely important part of businesses today, so using
+						Kafka to capture data to feed into your data lakes and real-time
+						analytics systems is incredibly important
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

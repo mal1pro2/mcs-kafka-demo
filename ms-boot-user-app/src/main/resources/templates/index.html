@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title>Kafka Overview Web Sites</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a href="/" th:href="@{/}">Overview Of Kafka</a></li>
+				<li><a href="/" th:href="@{/usecases}">Use Cases Of Kafka</a></li>
+				<li><a href="/" th:href="@{/architecture}">Architecture Of
+						Kafka</a></li>
+				<li><a href="/" th:href="@{/sopopular}">Why So Popular?</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/" th:href="@{/logout}"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<div class="container">
+
+		<p>
+		<div class="sect1">
+			<h2 id="_overview_of_kafka">Overview of Kafka</h2>
+			<div class="sectionbody">
+				<div class="paragraph">
+					<p>
+						<a href="http://kafka.apache.org/" target="_blank">Apache
+							Kafka</a> is an open source project for a distributed
+						publish-subscribe messaging system rethought as a distributed
+						commit log.
+					</p>
+				</div>
+				<div class="paragraph">
+					<p>
+						Kafka stores <a href="kafka-messages.html">messages</a> in <a
+							href="kafka-topics.html">topics</a> that are <a
+							href="kafka-topics.html#partitions">partitioned</a> and
+						replicated across multiple <a href="kafka-brokers.html">brokers</a>
+						in a cluster. <a href="kafka-producers.html">Producers</a> send
+						messages to topics from which <a href="kafka-consumers.html">consumers</a>
+						read.
+					</p>
+				</div>
+				<div class="paragraph">
+					<p>
+						<strong>Language Agnostic</strong>&thinsp;—&thinsp;producers and
+						consumers use binary protocol to talk to a Kafka cluster.
+					</p>
+				</div>
+				<div class="paragraph">
+					<p>Messages are byte arrays (with String, JSON, and Avro being
+						the most common formats). If a message has a key, Kafka makes sure
+						that all messages of the same key are in the same partition.</p>
+				</div>
+				<div class="paragraph">
+					<p>
+						Consumers may be grouped in a <a
+							href="kafka-consumers.html#consumer-group">consumer group</a>
+						with multiple consumers. Each consumer in a consumer group will
+						read messages from a unique subset of partitions in each topic
+						they subscribe to. Each message is delivered to one consumer in
+						the group, and all messages with the same key arrive at the same
+						consumer.
+					</p>
+				</div>
+				<div class="paragraph">
+					<p>
+						<strong>Durability</strong>&thinsp;—&thinsp;Kafka does not track
+						which messages were read by each consumer. Kafka keeps all
+						messages for a finite amount of time, and it is consumers'
+						responsibility to track their location per topic, i.e. <a
+							href="kafka-messages.html#offsets">offsets</a>.
+					</p>
+				</div>
+				<div class="paragraph">
+					<p>It is worth to note that Kafka is often compared to the
+						following open source projects:</p>
+				</div>
+				<div class="olist arabic">
+					<ol class="arabic">
+						<li>
+							<p>
+								<a href="http://activemq.apache.org/" target="_blank">Apache
+									ActiveMQ</a> and <a href="https://www.rabbitmq.com/"
+									target="_blank">RabbitMQ</a> given they are message broker
+								systems, too.
+							</p>
+						</li>
+						<li>
+							<p>
+								<a href="http://flume.apache.org/" target="_blank">Apache
+									Flume</a> for its ingestion capabilities designed to send data to <a
+									href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html"
+									target="_blank">HDFS</a> and <a
+									href="https://hbase.apache.org/" target="_blank">Apache
+									HBase</a>.
+							</p>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		</p>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
